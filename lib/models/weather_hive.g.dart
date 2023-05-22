@@ -6,7 +6,7 @@ part of 'weather_hive.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class WeatherHiveModelAdapter extends TypeAdapter<WeatherHive> {
+class WeatherHiveAdapter extends TypeAdapter<WeatherHive> {
   @override
   final int typeId = 1;
 
@@ -44,7 +44,7 @@ class WeatherHiveModelAdapter extends TypeAdapter<WeatherHive> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is WeatherHiveModelAdapter &&
+      other is WeatherHiveAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

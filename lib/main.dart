@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:weather/login_screen.dart';
+import 'package:weather/models/weather_hive.dart';
+import 'package:weather/screens/login_screen.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:weather/models/boxes.dart';
 import 'package:weather/models/pengguna.dart';
@@ -7,7 +8,9 @@ import 'package:weather/models/pengguna.dart';
 void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(PenggunaAdapter());
+  Hive.registerAdapter(WeatherHiveAdapter());
   await Hive.openBox<Pengguna>(HiveBoxex.pengguna);
+  await Hive.openBox<WeatherHive>(HiveBoxex.weather);
   runApp(MyApp());
 }
 
