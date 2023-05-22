@@ -3,9 +3,9 @@ import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:weather/card_weather.dart';
-import 'package:weather/login_screen.dart';
+import 'package:weather/screens/login_screen.dart';
 import 'package:weather/models/weather.dart';
-import 'package:weather/weather.dart';
+import 'package:weather/screens/weather.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Navigasi extends StatefulWidget {

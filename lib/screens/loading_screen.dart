@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:weather/api/api_data_source.dart';
 import 'package:weather/models/weather.dart';
-import 'package:weather/navigasi.dart';
+import 'package:weather/screens/navigasi.dart';
 
 class LoadingPage extends StatefulWidget {
   @override

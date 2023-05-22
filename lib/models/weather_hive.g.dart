@@ -1,22 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'weather_hive_model.dart';
+part of 'weather_hive.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class WeatherHiveModelAdapter extends TypeAdapter<WeatherHiveModel> {
+class WeatherHiveModelAdapter extends TypeAdapter<WeatherHive> {
   @override
   final int typeId = 1;
 
   @override
-  WeatherHiveModel read(BinaryReader reader) {
+  WeatherHive read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return WeatherHiveModel(
+    return WeatherHive(
       city: fields[0] as String,
       country: fields[1] as String,
       lat: fields[2] as String,
@@ -25,7 +25,7 @@ class WeatherHiveModelAdapter extends TypeAdapter<WeatherHiveModel> {
   }
 
   @override
-  void write(BinaryWriter writer, WeatherHiveModel obj) {
+  void write(BinaryWriter writer, WeatherHive obj) {
     writer
       ..writeByte(4)
       ..writeByte(0)

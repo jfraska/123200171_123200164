@@ -1,8 +1,8 @@
 import 'package:hive_flutter/hive_flutter.dart';
-part 'weather_hive_model.g.dart';
+part 'weather_hive.g.dart';
 
 @HiveType(typeId: 1)
-class WeatherHiveModel extends HiveObject {
+class WeatherHive extends HiveObject {
   @HiveField(0)
   String city;
 
@@ -15,5 +15,5 @@ class WeatherHiveModel extends HiveObject {
   @HiveField(3)
   String lon;
 
-  WeatherHiveModel({this.city, this.country, this.lat, this.lon});
+  WeatherHive({this.city, this.country, this.lat, this.lon});
 }
