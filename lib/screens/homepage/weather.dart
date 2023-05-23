@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:weather/models/forcast.dart';
 import 'package:weather/models/weather.dart';
-import 'package:weather/screens/search_screen.dart';
-import '../extensions.dart';
+import 'package:weather/screens/homepage/search_screen.dart';
+import '../../extensions.dart';
 import 'package:intl/intl.dart';
 import 'package:weather/api/api_data_source.dart';
 

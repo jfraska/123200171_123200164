@@ -18,9 +18,9 @@ class WeatherHiveAdapter extends TypeAdapter<WeatherHive> {
     };
     return WeatherHive(
       city: fields[0] as String,
-      country: fields[1] as String,
-      lat: fields[2] as String,
-      lon: fields[3] as String,
+      desc: fields[1] as String,
+      lat: fields[2] as double,
+      lon: fields[3] as double,
     );
   }
 
@@ -31,7 +31,7 @@ class WeatherHiveAdapter extends TypeAdapter<WeatherHive> {
       ..writeByte(0)
       ..write(obj.city)
       ..writeByte(1)
-      ..write(obj.country)
+      ..write(obj.desc)
       ..writeByte(2)
       ..write(obj.lat)
       ..writeByte(3)

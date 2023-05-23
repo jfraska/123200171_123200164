@@ -7,13 +7,13 @@ class WeatherHive extends HiveObject {
   String city;
 
   @HiveField(1)
-  String country;
+  String desc;
 
   @HiveField(2)
-  String lat;
+  double lat;
 
   @HiveField(3)
-  String lon;
+  double lon;
 
-  WeatherHive({this.city, this.country, this.lat, this.lon});
+  WeatherHive({this.city, this.desc, this.lat, this.lon});
 }

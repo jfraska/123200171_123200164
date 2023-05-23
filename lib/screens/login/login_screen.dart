@@ -2,10 +2,10 @@ import 'package:encrypt/encrypt.dart' as encrypt;
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:weather/models/boxes.dart';
-import 'package:weather/models/pengguna.dart';
-import 'package:weather/screens/loading_screen.dart';
-import 'package:weather/screens/registrasi_screen.dart';
+import 'package:weather/models/hive/boxes.dart';
+import 'package:weather/models/hive/pengguna.dart';
+import 'package:weather/screens/homepage/loading_screen.dart';
+import 'package:weather/screens/login/registrasi_screen.dart';
 
 class LoginPage extends StatefulWidget {
   @override

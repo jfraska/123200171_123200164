@@ -1,9 +1,14 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:weather/add_weather.dart';
-import 'package:weather/models/boxes.dart';
-import 'package:weather/models/weather_hive.dart';
+import 'package:weather/screens/weathersave/add_weather.dart';
+import 'package:weather/api/api_data_source.dart';
+import 'package:weather/models/hive/boxes.dart';
+import 'package:weather/models/weather.dart';
+import 'package:weather/models/hive/weather_hive.dart';
+import 'package:weather/screens/navigasi.dart';
 
 class CardWeather extends StatefulWidget {
   @override
@@ -23,38 +28,70 @@ class _CardWeatherState extends State<CardWeather> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text("Cuaca"),
+        centerTitle: true,
         automaticallyImplyLeading: false,
       ),
       body: ValueListenableBuilder<Box>(
-        valueListenable: _myBox.listenable(),
-        builder: (context, value, child) {
-          if (value.isEmpty) {
-            return const Center(
-              child: Text('Weather Tidak Ada'),
-            );
-          }
-          return ListView.builder(
-            itemCount: value.length,
-            itemBuilder: (context, index) {
-              WeatherHive weather = value.getAt(index);
-              return Dismissible(
-                key: UniqueKey(),
-                background: Container(
-                  color: Colors.red,
-                ),
-                onDismissed: (direction) {
-                  // DELETE TODO AT INDEX
-                  _myBox.deleteAt(index);
-                },
-                child: ListTile(
-                  title: Text(weather.city),
-                  subtitle: Text(weather.lat),
+          valueListenable: _myBox.listenable(),
+          builder: (context, value, child) {
+            if (value.isEmpty) {
+              return const Center(
+                child: Text(
+                  'Weather Tidak Ada',
+                  style: TextStyle(
+                    color: Colors.white, // Ganti warna teks sesuai keinginan
+                  ),
                 ),
               );
-            },
-          );
-        },
-      ),
+            }
+            return ListView.builder(
+                itemCount: value.length,
+                itemBuilder: (context, index) {
+                  WeatherHive weather = value.getAt(index);
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: InkWell(
+                      onTap: () async {
+                        Weather weatherData = Weather.fromJson(
+                            await ApiDataSource.instance
+                                .getWeather(weather.lat, weather.lon));
+
+                        print(weatherData);
+
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return Navigasi(weatherData);
+                        }));
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: ListTile(
+                          title: Text(
+                            weather.city,
+                          ),
+                          subtitle: Text(
+                            weather.desc,
+                          ),
+                          trailing: IconButton(
+                            icon: Icon(
+                              Iconsax.trash,
+                              color: Colors.red,
+                            ),
+                            onPressed: () {
+                              // Handle delete button click
+                              _myBox.deleteAt(index);
+                            },
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                });
+          }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(

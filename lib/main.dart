@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:weather/models/weather_hive.dart';
-import 'package:weather/screens/login_screen.dart';
+import 'package:weather/models/hive/weather_hive.dart';
+import 'package:weather/screens/login/login_screen.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:weather/models/boxes.dart';
-import 'package:weather/models/pengguna.dart';
+import 'package:weather/models/hive/boxes.dart';
+import 'package:weather/models/hive/pengguna.dart';
 
 void main() async {
   await Hive.initFlutter();

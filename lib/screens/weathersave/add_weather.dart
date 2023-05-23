@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:weather/api/api_data_source.dart';
-import 'package:weather/models/boxes.dart';
+import 'package:weather/models/hive/boxes.dart';
 import 'package:weather/models/weather.dart';
-import 'package:weather/models/weather_hive.dart';
+import 'package:weather/models/hive/weather_hive.dart';
 
 class AddWeather extends StatefulWidget {
   const AddWeather({Key key}) : super(key: key);
@@ -77,8 +77,9 @@ class _AddWeatherState extends State<AddWeather> {
                   if (weatherData != null) {
                     _myBox.add(WeatherHive(
                       city: weatherData.name,
-                      lat: weatherData.lat.toString(),
-                      lon: weatherData.lon.toString(),
+                      desc: weatherData.description,
+                      lat: weatherData.lat,
+                      lon: weatherData.lon,
                     ));
                   }
                   Navigator.pop(context);
